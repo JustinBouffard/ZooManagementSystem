@@ -14,4 +14,8 @@ public class CompositeEnclosureCollection implements EnclosureCollection {
     public String display() {
         return "";
     }
+
+    public void addCollection(EnclosureCollection pEnclosureCollection) {
+
+    }
 }
