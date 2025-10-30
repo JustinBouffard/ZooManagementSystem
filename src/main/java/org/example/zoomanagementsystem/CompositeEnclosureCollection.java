@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CompositeEnclosureCollection implements EnclosureCollection {
     private final String aAreaName;
-    private List<Enclosure> aEnclosureList = new ArrayList<Enclosure>();
+    private List<EnclosureCollection> aEnclosureCollectionList = new ArrayList<EnclosureCollection>();
 
     public CompositeEnclosureCollection(String pAreaName) {
         this.aAreaName = pAreaName;
@@ -16,6 +16,6 @@ public class CompositeEnclosureCollection implements EnclosureCollection {
     }
 
     public void addCollection(EnclosureCollection pEnclosureCollection) {
-
+        aEnclosureCollectionList.add(pEnclosureCollection);
     }
 }
