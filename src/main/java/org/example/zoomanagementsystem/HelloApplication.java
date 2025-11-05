@@ -1,4 +1,5 @@
 package org.example.zoomanagementsystem;
+import org.example.zoomanagementsystem.Controllers.HelloController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +9,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.example.zoomanagementsystem.ImportHelper.createAnimals;
 
 public class HelloApplication extends Application {
     @Override

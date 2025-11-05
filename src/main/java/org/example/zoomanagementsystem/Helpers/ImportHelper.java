@@ -1,4 +1,5 @@
-package org.example.zoomanagementsystem;
+package org.example.zoomanagementsystem.Helpers;
+import org.example.zoomanagementsystem.Model.*;
 
 /**
  * The {@code ImportHelper} class is a utility class responsible for
