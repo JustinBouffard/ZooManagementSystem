@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="382.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<VBox fx:controller="org.example.zoomanagementsystem.Controllers.AnimalViewController" prefHeight="382.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
             <Label text="Animal">
@@ -29,7 +29,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField />
+                        <TextField fx:id="animalTypeText" />
                      </children>
                   </HBox>
                </children>
@@ -47,7 +47,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField />
+                        <TextField fx:id="animalNameText" />
                      </children>
                   </HBox>
                </children>
@@ -65,7 +65,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <TextField />
+                        <TextField fx:id="animalAgeText" />
                      </children>
                   </HBox>
                </children>

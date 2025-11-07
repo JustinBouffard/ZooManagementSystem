@@ -44,7 +44,7 @@ public class AnimalViewController {
         }
     }
 
-    private void onSaveButtonClick() {
+    public void onSaveButtonClick() {
         String pType = animalTypeText.getText().trim();
         String pName = animalNameText.getText().trim();
         String pAgeStr = animalAgeText.getText().trim();
@@ -77,13 +77,14 @@ public class AnimalViewController {
         closeWindow();
     }
 
-    private void onCancelButtonClick() {
+    public void onCancelButtonClick() {
         aResultAnimal = null;
         closeWindow();
     }
 
     private void closeWindow() {
         Stage stage = (Stage) animalSaveButton.getScene().getWindow();
+        stage.close();
     }
 
     public Animal getAnimal() {
