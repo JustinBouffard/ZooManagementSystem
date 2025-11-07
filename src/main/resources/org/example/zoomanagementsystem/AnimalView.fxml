@@ -78,12 +78,12 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="77.0" prefWidth="106.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Save" />
+                        <Button mnemonicParsing="false" onAction="#onSaveButtonClick" text="Save" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel" />
                      </children>
                   </HBox>
                </children>
