@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="300" prefWidth="400" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" prefHeight="300" prefWidth="400" spacing="10" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.zoomanagementsystem.Controllers.CompositeEnclosureCollectionController">
     <HBox alignment="CENTER" spacing="10" VBox.vgrow="NEVER">
-        <Button fx:id="openButton" maxWidth="Infinity" text="Open" HBox.hgrow="ALWAYS" />
-        <Button fx:id="backButton" maxWidth="Infinity" text="Back" HBox.hgrow="ALWAYS" />
-        <Button fx:id="closeButton" maxWidth="Infinity" text="Close" HBox.hgrow="ALWAYS" />
+        <Button fx:id="openButton" maxWidth="Infinity" onAction="#onOpenButtonClick" text="Open" HBox.hgrow="ALWAYS" />
+        <Button fx:id="backButton" maxWidth="Infinity" onAction="#onBackButtonClick" text="Back" HBox.hgrow="ALWAYS" />
+        <Button fx:id="closeButton" maxWidth="Infinity" onAction="#onCloseButtonClick" text="Close" HBox.hgrow="ALWAYS" />
     </HBox>
    <GridPane>
      <columnConstraints>
@@ -28,7 +28,7 @@
           <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Area Name" />
       </children>
    </GridPane>
-    <ListView VBox.vgrow="ALWAYS" />
+    <ListView fx:id="compositeEnclosureListView" VBox.vgrow="ALWAYS" />
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>

@@ -34,4 +34,9 @@ public class Enclosure implements EnclosureCollection {
     public List<Animal> getAnimals() {
         return Collections.unmodifiableList(this.aAnimalList);
     }
+
+    @Override
+    public String toString() {
+        return this.aName;
+    }
 }

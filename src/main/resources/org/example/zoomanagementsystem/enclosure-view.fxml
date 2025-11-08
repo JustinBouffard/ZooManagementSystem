@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="323.0" prefWidth="403.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.zoomanagementsystem.EnclosureController">
+<BorderPane prefHeight="323.0" prefWidth="403.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.zoomanagementsystem.Controllers.EnclosureViewController">
 
     <left>
         <VBox alignment="TOP_CENTER">
