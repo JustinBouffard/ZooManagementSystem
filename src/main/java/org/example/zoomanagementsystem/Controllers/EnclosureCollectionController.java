@@ -14,27 +14,28 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.example.zoomanagementsystem.Model.CompositeEnclosureCollection;
+import org.example.zoomanagementsystem.Model.EnclosureCollection;
 import org.example.zoomanagementsystem.ZooApplication;
 
 import java.io.IOException;
 import java.util.List;
 
-public class CompositeEnclosureCollectionController {
+public class EnclosureCollectionController {
     @FXML
-    private ListView<CompositeEnclosureCollection> compositeEnclosureListView;
+    private ListView<EnclosureCollection> enclosureCollectionListView;
 
-    public void setCompositeEnclosureCollectionView(List<CompositeEnclosureCollection> compositeEnclosureCollection) {
-        if (compositeEnclosureCollection == null) return;
+    public void setEnclosureCollectionView(List<EnclosureCollection> pEnclosureCollection) {
+        if (pEnclosureCollection == null) return;
 
-        compositeEnclosureListView.getItems().clear();
+        enclosureCollectionListView.getItems().clear();
 
-        compositeEnclosureListView.setItems(FXCollections.observableArrayList(compositeEnclosureCollection));
+        enclosureCollectionListView.setItems(FXCollections.observableArrayList(pEnclosureCollection));
     }
 
     @FXML
     private void onOpenButtonClick(ActionEvent pEvent) throws IOException {
-        if (compositeEnclosureListView.getSelectionModel().getSelectedItem() != null) {
-            openEnclosureWindow(getSelectedEnclosure(), pEvent);
+        if (enclosureCollectionListView.getSelectionModel().getSelectedItem() != null) {
+            openEnclosureCollection(getSelectedEnclosure(), pEvent);
         } else
             openAlert(Alert.AlertType.WARNING, "Warning", "Nothing selected!", "You need to select an area to open!");
 
@@ -56,11 +57,21 @@ public class CompositeEnclosureCollectionController {
         Platform.exit();
     }
 
-    private void openEnclosureWindow(CompositeEnclosureCollection pEnclosure, ActionEvent pEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-view.fxml"));
-        Parent view = fxmlLoader.load();
-        EnclosureViewController newEnclosureViewController = fxmlLoader.getController();
-        newEnclosureViewController.setEnclosure(pEnclosure);
+    private void openEnclosureCollection(EnclosureCollection pEnclosure, ActionEvent pEvent) throws IOException {
+        Parent view;
+        if(!pEnclosure.getCollections().isEmpty()){
+            FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-collection-view.fxml"));
+            view = fxmlLoader.load();
+            EnclosureCollectionController controller = fxmlLoader.getController();
+            controller.setEnclosureCollectionView(pEnclosure.getCollections());
+        }
+        else {
+            FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-view.fxml"));
+            view = fxmlLoader.load();
+            EnclosureController controller = fxmlLoader.getController();
+            controller.setEnclosure(pEnclosure);
+        }
+
         Scene nextScene = new Scene(view, 500, 500);
         Stage nextStage = new Stage();
         nextStage.setScene(nextScene);
@@ -70,8 +81,8 @@ public class CompositeEnclosureCollectionController {
         nextStage.showAndWait();
     }
 
-    private CompositeEnclosureCollection getSelectedEnclosure() {
-        return compositeEnclosureListView.getSelectionModel().getSelectedItem();
+    private EnclosureCollection getSelectedEnclosure() {
+        return enclosureCollectionListView.getSelectionModel().getSelectedItem();
     }
 
     private Alert openAlert(Alert.AlertType pType, String pTitle, String pHeader, String pContent) {

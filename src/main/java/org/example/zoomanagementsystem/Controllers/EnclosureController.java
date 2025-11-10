@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.example.zoomanagementsystem.Model.Animal;
 import org.example.zoomanagementsystem.Model.Enclosure;
+import org.example.zoomanagementsystem.Model.EnclosureCollection;
 
 import java.io.IOException;
 
@@ -69,8 +70,8 @@ public class EnclosureController {
     }
 
 
-    public void setEnclosure(Enclosure enclosure) {
-        this.currentEnclosure = enclosure;
+    public void setEnclosure(EnclosureCollection enclosure) {
+        this.currentEnclosure = (Enclosure) enclosure;
         updateView();
     }
 
