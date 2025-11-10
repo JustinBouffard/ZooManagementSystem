@@ -1,13 +1,13 @@
 package org.example.zoomanagementsystem.Controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.example.zoomanagementsystem.Model.Animal;
-import org.example.zoomanagementsystem.Model.Cougar;
-import org.example.zoomanagementsystem.Model.Lion;
-import org.example.zoomanagementsystem.Model.Tiger;
+import org.example.zoomanagementsystem.Model.*;
 
 public class AnimalViewController {
     @FXML
@@ -28,7 +28,7 @@ public class AnimalViewController {
     private Animal aResultAnimal;
     private Animal aOriginalAnimal;
 
-    public void setAnimal(Animal pAnimal) {
+    public void setAnimal (Animal pAnimal) {
         this.aOriginalAnimal = pAnimal;
 
         if (pAnimal != null) {
@@ -36,7 +36,8 @@ public class AnimalViewController {
             animalTypeText.setText(pAnimal.getClass().getSimpleName());
             animalNameText.setText(pAnimal.getName());
             animalAgeText.setText(String.valueOf(pAnimal.getAge()));
-        } else {
+        }
+        else {
             animalTypeText.setEditable(true);
             animalTypeText.clear();
             animalNameText.clear();
@@ -44,7 +45,8 @@ public class AnimalViewController {
         }
     }
 
-    public void onSaveButtonClick() {
+    @FXML
+    public void onSaveButtonClick(ActionEvent actionEvent) {
         String pType = animalTypeText.getText().trim();
         String pName = animalNameText.getText().trim();
         String pAgeStr = animalAgeText.getText().trim();
@@ -57,7 +59,12 @@ public class AnimalViewController {
         double pAge;
         try {
             pAge = Double.parseDouble(pAgeStr);
-        } catch (NumberFormatException e) {
+            if (pAge < 0) {
+                System.out.println("Please enter a valid number");
+                return;
+            }
+        }
+        catch (NumberFormatException e) {
             System.out.println("Please enter a valid number");
             return;
         }
@@ -65,19 +72,23 @@ public class AnimalViewController {
         Animal newAnimal;
         if (pType.equalsIgnoreCase("lion")) {
             newAnimal = new Lion(pName, pAge);
-        } else if (pType.equalsIgnoreCase("tiger")) {
+        }
+        else if (pType.equalsIgnoreCase("tiger")) {
             newAnimal = new Tiger(pName, pAge);
-        } else if (pType.equalsIgnoreCase("cougar")) {
+        }
+        else if  (pType.equalsIgnoreCase("cougar")) {
             newAnimal = new Cougar(pName, pAge);
-        } else {
-            System.out.println("Please enter a valid animal type: Lion, Tiger, or Cougar");
+        }
+        else {
+            System.out.println("Please enter a valid animal type");
             return;
         }
+
         aResultAnimal = newAnimal;
         closeWindow();
     }
 
-    public void onCancelButtonClick() {
+    public void onCancelButtonClick(ActionEvent actionEvent) {
         aResultAnimal = null;
         closeWindow();
     }
@@ -89,5 +100,9 @@ public class AnimalViewController {
 
     public Animal getAnimal() {
         return aResultAnimal;
+    }
+
+    public Animal getOriginalAnimal() {
+        return aOriginalAnimal;
     }
 }
