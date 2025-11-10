@@ -94,7 +94,7 @@ public class AnimalViewController {
     }
 
     private void closeWindow() {
-        Stage stage = (Stage) animalSaveButton.getScene().getWindow();
+        Stage stage = (Stage) animalTypeText.getScene().getWindow();
         stage.close();
     }
 
