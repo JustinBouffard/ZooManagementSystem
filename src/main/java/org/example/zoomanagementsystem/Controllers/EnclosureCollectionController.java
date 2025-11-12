@@ -13,28 +13,30 @@ import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.example.zoomanagementsystem.Model.CompositeEnclosureCollection;
 import org.example.zoomanagementsystem.Model.EnclosureCollection;
 import org.example.zoomanagementsystem.ZooApplication;
 
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author Justin Bouffard
+ */
 public class EnclosureCollectionController {
     @FXML
-    private ListView<EnclosureCollection> enclosureCollectionListView;
+    private ListView<EnclosureCollection> aEnclosureCollectionListView;
 
     public void setEnclosureCollectionView(List<EnclosureCollection> pEnclosureCollection) {
         if (pEnclosureCollection == null) return;
 
-        enclosureCollectionListView.getItems().clear();
+        aEnclosureCollectionListView.getItems().clear();
 
-        enclosureCollectionListView.setItems(FXCollections.observableArrayList(pEnclosureCollection));
+        aEnclosureCollectionListView.setItems(FXCollections.observableArrayList(pEnclosureCollection));
     }
 
     @FXML
     private void onOpenButtonClick(ActionEvent pEvent) throws IOException {
-        if (enclosureCollectionListView.getSelectionModel().getSelectedItem() != null) {
+        if (aEnclosureCollectionListView.getSelectionModel().getSelectedItem() != null) {
             openEnclosureCollection(getSelectedEnclosure(), pEvent);
         } else
             openAlert(Alert.AlertType.WARNING, "Warning", "Nothing selected!", "You need to select an area to open!");
@@ -82,7 +84,7 @@ public class EnclosureCollectionController {
     }
 
     private EnclosureCollection getSelectedEnclosure() {
-        return enclosureCollectionListView.getSelectionModel().getSelectedItem();
+        return aEnclosureCollectionListView.getSelectionModel().getSelectedItem();
     }
 
     private Alert openAlert(Alert.AlertType pType, String pTitle, String pHeader, String pContent) {

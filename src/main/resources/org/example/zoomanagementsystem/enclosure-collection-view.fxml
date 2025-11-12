@@ -28,7 +28,7 @@
           <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Area Name" />
       </children>
    </GridPane>
-    <ListView fx:id="enclosureCollectionListView" VBox.vgrow="ALWAYS" />
+    <ListView fx:id="aEnclosureCollectionListView" VBox.vgrow="ALWAYS" />
     <padding>
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>

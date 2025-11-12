@@ -9,6 +9,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.example.zoomanagementsystem.Model.*;
 
+/**
+ * @author Shanley
+ */
 public class AnimalViewController {
     @FXML
     private TextField animalTypeText;

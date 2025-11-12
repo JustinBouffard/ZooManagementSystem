@@ -30,8 +30,6 @@ public class ZooApplication extends Application {
         stage.setTitle("Zoo Areas");
         stage.setScene(scene);
         stage.show();
-
-
     }
 
     public static void main(String[] args) {
