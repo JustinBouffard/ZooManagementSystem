@@ -9,6 +9,10 @@ import javafx.stage.Stage;
 import org.example.zoomanagementsystem.Model.Animal;
 import org.example.zoomanagementsystem.Model.Enclosure;
 import org.example.zoomanagementsystem.Model.EnclosureCollection;
+import org.example.zoomanagementsystem.Model.Lion;
+import org.example.zoomanagementsystem.Model.Tiger;
+import org.example.zoomanagementsystem.Model.Cougar;
+
 
 import java.io.IOException;
 import java.util.Optional;
@@ -65,6 +69,16 @@ public class EnclosureController {
             AnimalViewController controller = loader.getController();
             controller.setAnimal(animal);
 
+            if (animal == null && currentEnclosure != null) {
+                String enclosureName = currentEnclosure.getName().toLowerCase();
+                if (enclosureName.contains("lion")) {
+                    controller.setAnimal(new Lion("", 0));
+                } else if (enclosureName.contains("tiger")) {
+                    controller.setAnimal(new Tiger("", 0));
+                } else if (enclosureName.contains("cougar")) {
+                    controller.setAnimal(new Cougar("", 0));
+                }
+            }
             Stage stage = new Stage();
             stage.setTitle(animal == null ? "Add New Animal" : "Edit Animal: " + animal.getName());
             stage.setScene(scene);
