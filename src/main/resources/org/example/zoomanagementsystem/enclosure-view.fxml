@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-@author Pascale Fontaine
--->
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -21,7 +18,7 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
             <HBox spacing="10.0">
-               <Button fx:id="btnBack" prefWidth="80.0" text="Back" />
+                <Button fx:id="btnBack" prefWidth="80.0" text="Back" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Button fx:id="btnClose" prefWidth="80.0" text="Close" />
             </HBox>
