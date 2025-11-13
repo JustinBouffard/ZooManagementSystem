@@ -35,4 +35,9 @@ public class CompositeEnclosureCollection implements EnclosureCollection {
     public List<Animal> getAnimals() {
         return List.of();
     }
+
+    @Override
+    public String toString() {
+        return this.aAreaName;
+    }
 }

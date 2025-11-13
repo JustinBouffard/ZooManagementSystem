@@ -1,6 +1,7 @@
 module org.example.zoomanagementsystem {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
     opens org.example.zoomanagementsystem to javafx.fxml;
     exports org.example.zoomanagementsystem;

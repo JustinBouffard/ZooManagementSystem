@@ -2,9 +2,9 @@ package org.example.zoomanagementsystem.Model;
 
 public class Animal {
     private final String aName;
-    private final int aAge;
+    private final double aAge;
 
-    public Animal(String pName, int pAge) {
+    public Animal(String pName, double pAge) {
         this.aName = pName;
         this.aAge = pAge;
     }
@@ -13,7 +13,7 @@ public class Animal {
         return this.aName;
     }
 
-    public int getAge() {
+    public double getAge() {
         return this.aAge;
     }
 }
