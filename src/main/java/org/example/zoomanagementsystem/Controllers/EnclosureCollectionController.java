@@ -35,7 +35,7 @@ public class EnclosureCollectionController {
     }
 
     @FXML
-    private void onOpenButtonClick(ActionEvent pEvent) throws IOException {
+    private void onOpenButtonClick(ActionEvent pEvent) {
         if (aEnclosureCollectionListView.getSelectionModel().getSelectedItem() != null) {
             openEnclosureCollection(getSelectedEnclosure(), pEvent);
         } else
@@ -59,28 +59,31 @@ public class EnclosureCollectionController {
         Platform.exit();
     }
 
-    private void openEnclosureCollection(EnclosureCollection pEnclosure, ActionEvent pEvent) throws IOException {
-        Parent view;
-        if(!pEnclosure.getCollections().isEmpty()){
-            FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-collection-view.fxml"));
-            view = fxmlLoader.load();
-            EnclosureCollectionController controller = fxmlLoader.getController();
-            controller.setEnclosureCollectionView(pEnclosure.getCollections());
-        }
-        else {
-            FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-view.fxml"));
-            view = fxmlLoader.load();
-            EnclosureController controller = fxmlLoader.getController();
-            controller.setEnclosure(pEnclosure);
-        }
+    private void openEnclosureCollection(EnclosureCollection pEnclosure, ActionEvent pEvent) {
+        try {
+            Parent view;
+            if (!pEnclosure.getCollections().isEmpty()) {
+                FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-collection-view.fxml"));
+                view = fxmlLoader.load();
+                EnclosureCollectionController controller = fxmlLoader.getController();
+                controller.setEnclosureCollectionView(pEnclosure.getCollections());
+            } else {
+                FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-view.fxml"));
+                view = fxmlLoader.load();
+                EnclosureController controller = fxmlLoader.getController();
+                controller.setEnclosure(pEnclosure);
+            }
 
-        Scene nextScene = new Scene(view, 500, 500);
-        Stage nextStage = new Stage();
-        nextStage.setScene(nextScene);
-        nextStage.setTitle(pEnclosure.getName());
-        nextStage.initModality(Modality.WINDOW_MODAL);
-        nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
-        nextStage.showAndWait();
+            Scene nextScene = new Scene(view, 500, 500);
+            Stage nextStage = new Stage();
+            nextStage.setScene(nextScene);
+            nextStage.setTitle(pEnclosure.getName());
+            nextStage.initModality(Modality.WINDOW_MODAL);
+            nextStage.initOwner(((Node) pEvent.getSource()).getScene().getWindow());
+            nextStage.showAndWait();
+        } catch (IOException e) {
+            openAlert(Alert.AlertType.ERROR, "Error", "View loading failed", e.getMessage());
+        }
     }
 
     private EnclosureCollection getSelectedEnclosure() {

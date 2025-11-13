@@ -1,6 +1,7 @@
 package org.example.zoomanagementsystem;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,21 +16,26 @@ import java.util.List;
 
 public class ZooApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-collection-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
+    public void start(Stage stage) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(ZooApplication.class.getResource("enclosure-collection-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 500);
 
-        EnclosureCollectionController controller = fxmlLoader.getController();
+            EnclosureCollectionController controller = fxmlLoader.getController();
 
-        List<EnclosureCollection> compositeEnclosureCollections = new ArrayList<>();
-        CompositeEnclosureCollection bigCats = ImportHelper.createAnimals();
-        compositeEnclosureCollections.add(bigCats);
+            List<EnclosureCollection> compositeEnclosureCollections = new ArrayList<>();
+            CompositeEnclosureCollection bigCats = ImportHelper.createAnimals();
+            compositeEnclosureCollections.add(bigCats);
 
-        controller.setEnclosureCollectionView(compositeEnclosureCollections);
+            controller.setEnclosureCollectionView(compositeEnclosureCollections);
 
-        stage.setTitle("Zoo Areas");
-        stage.setScene(scene);
-        stage.show();
+            stage.setTitle("Zoo Areas");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.err.println("Failed to load FXML: " + e.getMessage());
+            Platform.exit();
+        }
     }
 
     public static void main(String[] args) {
